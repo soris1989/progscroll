@@ -1,0 +1,19 @@
+{
+    "name": "ori/progscroll",
+    "description": "A progressbar describes how much a user scrolled a page by horizontial scrollbar.",
+    "type": "project",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Ori Saati",
+            "email": "service@os-studio.co.il"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ProgScroll\\Inc\\": "./inc"
+        }
+    }
+}

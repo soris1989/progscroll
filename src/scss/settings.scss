@@ -1,0 +1,14 @@
+@import './modules/checkbox.scss';
+
+.progscroll-multi-text-fields-wrapper {
+    display: flex;
+    align-items: center;
+
+    input {
+        flex: 1
+    }
+
+    .description {
+        display: block;
+    }
+}
