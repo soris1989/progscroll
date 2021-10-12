@@ -103,8 +103,7 @@ class SettingsController extends BaseController
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'active',
                     'class' => 'ui-toggle',
-                    'description' => 'activate/deactivate progscroll on site',
-                    'type' => 'number'
+                    'description' => 'activate/deactivate progscroll on site',                  
                 )
             ),
             array(
@@ -117,8 +116,7 @@ class SettingsController extends BaseController
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'position_xs',
                     'placeholder' => 'Insert a numeric value',
-                    'description' => 'position is relative to page top for extra small device (< 576px)',
-                    'type' => 'number'
+                    'description' => 'position is relative to page top for extra small device (< 576px)', 
                 )
             ),
             array(
@@ -132,7 +130,6 @@ class SettingsController extends BaseController
                     'label_for' => 'position_sm',
                     'placeholder' => 'Insert a numeric value',
                     'description' => 'position is relative to page top for small device (576px - 767px)',
-                    'type' => 'number'
                 )
             ),
             array(
@@ -145,8 +142,7 @@ class SettingsController extends BaseController
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'position_md',
                     'placeholder' => 'Insert a numeric value',
-                    'description' => 'position is relative to page top for medium device (768px - 991px)',
-                    'type' => 'number'
+                    'description' => 'position is relative to page top for medium device (768px - 991px)',          
                 )
             ),
             array(
@@ -159,8 +155,7 @@ class SettingsController extends BaseController
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'position_lg',
                     'placeholder' => 'Insert a numeric value',
-                    'description' => 'position is relative to page top for large device (992px - 1199px)',
-                    'type' => 'number'
+                    'description' => 'position is relative to page top for large device (992px - 1199px)',        
                 )
             ),
             array(
@@ -173,8 +168,7 @@ class SettingsController extends BaseController
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'position_xl',
                     'placeholder' => 'Insert a numeric value',
-                    'description' => 'position is relative to page top for extra large device (>= 1200px)',
-                    'type' => 'number'
+                    'description' => 'position is relative to page top for extra large device (>= 1200px)',    
                 )
             ),
             array(
@@ -186,8 +180,7 @@ class SettingsController extends BaseController
                 'args' => array(
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'thickness',
-                    'placeholder' => 'Insert a numeric value',
-                    'type' => 'number'
+                    'placeholder' => 'Insert a numeric value',  
                 )
             ),
             array(
@@ -212,7 +205,7 @@ class SettingsController extends BaseController
                     'option_name' => PROGSCROLL_PLUGIN_SLUG,
                     'label_for' => 'z_index',
                     'placeholder' => 'Insert a numeric value',
-                    'type' => 'number'
+                    
                 )
             ),
             array(
