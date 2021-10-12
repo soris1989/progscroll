@@ -22,13 +22,13 @@
 
 
 <?php if ($active) { ?>
-<div id="progscroll" class="progscroll <?= $direction ?>" data-color="<?= $color ?>" data-z-index="<?= $z_index ?>"
-    data-direction="<?= $direction ?>" data-thickness="<?= $thickness ?>" data-thickness-unit="<?= $thickness_unit ?>" 
-    data-position-xs="<?= $position_xs ?>" data-position-xs-unit="<?= $position_xs_unit ?>"
-    data-position-sm="<?= $position_sm ?>" data-position-sm-unit="<?= $position_sm_unit ?>"
-    data-position-md="<?= $position_md ?>" data-position-md-unit="<?= $position_md_unit ?>"
-    data-position-lg="<?= $position_lg ?>" data-position-lg-unit="<?= $position_lg_unit ?>"
-    data-position-xl="<?= $position_xl ?>" data-position-xl-unit="<?= $position_xl_unit ?>"
+<div id="progscroll" class="progscroll <?php echo $direction ?>" data-color="<?php echo $color ?>" data-z-index="<?php echo $z_index ?>"
+    data-direction="<?php echo $direction ?>" data-thickness="<?php echo $thickness ?>" data-thickness-unit="<?php echo $thickness_unit ?>" 
+    data-position-xs="<?php echo $position_xs ?>" data-position-xs-unit="<?php echo $position_xs_unit ?>"
+    data-position-sm="<?php echo $position_sm ?>" data-position-sm-unit="<?php echo $position_sm_unit ?>"
+    data-position-md="<?php echo $position_md ?>" data-position-md-unit="<?php echo $position_md_unit ?>"
+    data-position-lg="<?php echo $position_lg ?>" data-position-lg-unit="<?php echo $position_lg_unit ?>"
+    data-position-xl="<?php echo $position_xl ?>" data-position-xl-unit="<?php echo $position_xl_unit ?>"
     >
 </div>
 <?php } ?>
