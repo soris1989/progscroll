@@ -7,7 +7,7 @@ Plugin Name: ProgScroll
 Plugin URI: https://progscroll.os-studio.co.il/
 Description: A progressbar describes how much a user scrolled a page by horizontial scrollbar.
 Version: 1.0.0
-Author: soris1989 (Ori Saati)
+Author: Ori Saati
 Author URI: https://www.os-studio.co.il/
 License: GPLv2 or later
 Text Domain: progscroll
@@ -28,7 +28,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-Copyright 2021 O.S-Studio.
+Copyright 2021 o.s-studio
 */
 
 // if this file is called directly, abort!
