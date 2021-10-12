@@ -74,21 +74,21 @@ class SettingsCallbacks extends BaseController {
         else {
             $data = array(
                 'active' => isset( $form_data['active'] ),
-                'position_xs' => isset( $form_data['position_xs'] ) ? $form_data['position_xs'] : '',
-                'position_sm' => isset( $form_data['position_sm'] ) ? $form_data['position_sm'] : '',
-                'position_md' => isset( $form_data['position_md'] ) ? $form_data['position_md'] : '',
-                'position_lg' => isset( $form_data['position_lg'] ) ? $form_data['position_lg'] : '',
-                'position_xl' => isset( $form_data['position_xl'] ) ? $form_data['position_xl'] : '',
-                'position_xs_unit' => isset( $form_data['position_xs_unit'] ) ? $form_data['position_xs_unit'] : '',
-                'position_sm_unit' => isset( $form_data['position_sm_unit'] ) ? $form_data['position_sm_unit'] : '',
-                'position_md_unit' => isset( $form_data['position_md_unit'] ) ? $form_data['position_md_unit'] : '',
-                'position_lg_unit' => isset( $form_data['position_lg_unit'] ) ? $form_data['position_lg_unit'] : '',
-                'position_xl_unit' => isset( $form_data['position_xl_unit'] ) ? $form_data['position_xl_unit'] : '',
+                'position_xs' => isset( $form_data['position_xs'] ) ? sanitize_text_field( $form_data['position_xs'] ) : '',
+                'position_sm' => isset( $form_data['position_sm'] ) ? sanitize_text_field( $form_data['position_sm'] ) : '',
+                'position_md' => isset( $form_data['position_md'] ) ? sanitize_text_field( $form_data['position_md'] ) : '',
+                'position_lg' => isset( $form_data['position_lg'] ) ? sanitize_text_field( $form_data['position_lg'] ) : '',
+                'position_xl' => isset( $form_data['position_xl'] ) ? sanitize_text_field( $form_data['position_xl'] ) : '',
+                'position_xs_unit' => isset( $form_data['position_xs_unit'] ) ? sanitize_text_field( $form_data['position_xs_unit'] ) : '',
+                'position_sm_unit' => isset( $form_data['position_sm_unit'] ) ? sanitize_text_field( $form_data['position_sm_unit'] ) : '',
+                'position_md_unit' => isset( $form_data['position_md_unit'] ) ? sanitize_text_field( $form_data['position_md_unit'] ) : '',
+                'position_lg_unit' => isset( $form_data['position_lg_unit'] ) ? sanitize_text_field( $form_data['position_lg_unit'] ) : '',
+                'position_xl_unit' => isset( $form_data['position_xl_unit'] ) ? sanitize_text_field ($form_data['position_xl_unit'] ) : '',
                 'color' => isset( $form_data['color'] ) ? sanitize_text_field( $form_data['color'] ) : '',
                 'z_index' => isset( $form_data['z_index'] ) ? sanitize_text_field( $form_data['z_index'] ) : '',
-                'thickness' => isset( $form_data['thickness'] ) ? filter_var($form_data['thickness'], FILTER_SANITIZE_NUMBER_FLOAT) : '',
-                'thickness_unit' => isset( $form_data['thickness_unit'] ) ? $form_data['thickness_unit'] : '',
-                'direction' => isset( $form_data['direction'] ) ? $form_data['direction'] : '',
+                'thickness' => isset( $form_data['thickness'] ) ? sanitize_text_field( $form_data['thickness'] ) : '',
+                'thickness_unit' => isset( $form_data['thickness_unit'] ) ? sanitize_text_field( $form_data['thickness_unit'] ) : '',
+                'direction' => isset( $form_data['direction'] ) ? sanitize_text_field( $form_data['direction'] ) : '',
             );
         }   
 
@@ -100,33 +100,33 @@ class SettingsCallbacks extends BaseController {
     }
     
     public function text_field( $args ) {
-        $name = esc_attr( $args['label_for'] );
-        $option_name = esc_attr( $args['option_name' ] );
-        $placeholder = isset($args['placeholder']) ? esc_attr( $args['placeholder'] ) : null;
-        $description = isset($args['description']) ? esc_html( $args['description'] ) : null;
-        $type = isset($args['type']) ? esc_attr( $args['type'] ) : 'text';
+        $name = $args['label_for'];
+        $option_name = $args['option_name' ];
+        $placeholder = isset($args['placeholder']) ? $args['placeholder'] : '';
+        $description = isset($args['description']) ? $args['description'] : '';
+        $type = isset($args['type']) ? $args['type'] : 'text';
        
         $option = get_option( $option_name ); // get option value from db
-        $value = isset($option[$name]) && $option[$name] ? $option[$name] : null; 
+        $value = isset($option[$name]) && $option[$name] ? $option[$name] : ''; 
 
         // return the input
-        $output = '<input type="' . $type . '" class="regular-text" id="' . $name 
-            . '" name="' . $option_name . '[' . $name . ']'
-            . '" value="' . $value . '" placeholder="' . $placeholder . '">';
+        $output = '<input type="' . esc_attr( $type ) . '" class="regular-text" id="' . esc_attr( $name ) 
+            . '" name="' . esc_attr( $option_name . '[' . $name . ']' )
+            . '" value="' .  esc_attr($value) . '" placeholder="' . esc_attr( $placeholder ) . '">';
         if ($description) {
-            $output .= '<div class="description"><small>' . $description . '</small></div>';
+            $output .= '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
         }
 
         echo $output;
     }
 
     public function text_field_with_units( $args ) {
-        $name = esc_attr( $args['label_for'] );
+        $name = $args['label_for'];
         $unit_name = $name . '_unit';
-        $option_name = esc_attr( $args['option_name' ] );
-        $placeholder = isset($args['placeholder']) ? esc_attr( $args['placeholder'] ) : null;
-        $description = isset($args['description']) ? esc_html( $args['description'] ) : null;
-        $type = isset($args['type']) ? esc_attr( $args['type'] ) : 'text';
+        $option_name = $args['option_name'];
+        $placeholder = isset($args['placeholder']) ? $args['placeholder'] : '';
+        $description = isset($args['description']) ? $args['description'] : '';
+        $type = isset($args['type']) ? $args['type'] : 'text';
        
         $option = get_option( $option_name ); // get option value from db
         $value = isset($option[$name]) && $option[$name] ? $option[$name] : null; 
@@ -134,56 +134,58 @@ class SettingsCallbacks extends BaseController {
 
         // return the input
         $output = '<div><div class="progscroll-multi-text-fields-wrapper regular-text">'
-            . '<input type="' . $type . '" id="' . $name 
-            . '" name="' . $option_name . '[' . $name . ']'
-            . '" value="' . $value . '" placeholder="' . $placeholder . '">'
-            . '<select name="' . $option_name . '[' . $unit_name . ']" id="' . $unit_name . '">';
+            . '<input type="' . esc_attr( $type ) . '" id="' . esc_attr( $name )
+            . '" name="' . esc_attr( $option_name . '[' . $name . ']' )
+            . '" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '">'
+            . '<select name="' . esc_attr( $option_name . '[' . $unit_name . ']' )  . '" id="' . esc_attr( $unit_name ) . '">';
         
-            foreach ($this->units as $value) {
-                $output .= '<option value="' . $value . '"' . ($unit === $value ? ' selected' : '') . '>' . $value . '</option>';
-            }
+        foreach ($this->units as $value) {
+            $output .= '<option value="' . esc_attr( $value ) . '"' . ( ($unit === $value) ? ' selected' : '' ) . '>' . esc_html( $value ) . '</option>';
+        }
 
-            $output .= '</select></div>';
-            if ($description) {
-                $output .= '<div class="description"><small>' . $description . '</small></div>';
-            }
-            $output .= '</div>';
+        $output .= '</select></div>';
+        if ($description) {
+            $output .= '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
+        }
+        $output .= '</div>';
 
         echo $output;
     }
 
     public function select_field($args) {
-        $name = esc_attr( $args['label_for'] );
-        $option_name = esc_attr( $args['option_name' ] );
-        $select_options = $args['select_options' ] ?? array();
+        $name = $args['label_for'];
+        $option_name = $args['option_name'];
+        $select_options = $args['select_options'] ?? array();
 
         $option = get_option( $option_name ); // get option value from db
         $value = isset($option[$name]) && $option[$name] ? $option[$name] : null; 
 
-        echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '" class="regular-text">';
+        $output = '<select name="' . esc_attr( $option_name . '[' . $name . ']' ) . '" id="' . esc_attr( $name ) . '" class="regular-text">';
         foreach ($select_options as $item) {
-            echo '<option value="' . $item . '"' . (isset($value) && $item === $value  ? 'selected' : '') . '>' . strtoupper($item) . '</option>';
+            $output .= '<option value="' . esc_attr( $item  ) . '"' . ( (isset($value) && $item === $value)  ? 'selected' : '') . '>' . esc_html( strtoupper($item) ) . '</option>';
         }
-        echo '</select>';
+        $output .= '</select>';
+
+        echo $output;
     }
 
     public function checkbox_field( $args ) {
-        $name = esc_attr( $args['label_for'] );
-        $classes = isset($args['class']) ? esc_attr( $args['class'] ) : null;
-        $option_name = esc_attr( $args['option_name' ] );
-        $description = isset($args['description']) ? esc_html( $args['description'] ) : null;
+        $name = $args['label_for'] ;
+        $classes = isset($args['class']) ? $args['class'] : '';
+        $option_name = $args['option_name' ];
+        $description = isset($args['description']) ? $args['description'] : '';
 
         $option = get_option( $option_name ); // get option value from db
         $checked = isset($option[$name]) && $option[$name] ? $option[$name] : false;    
 
-        $output = '<div><div class="' . $classes . '">'
-            . '<input type="checkbox" id="' . $name
-            . '" name="' . $option_name . '[' . $name . ']'
+        $output = '<div><div class="' . esc_attr( $classes ) . '">'
+            . '<input type="checkbox" id="' . esc_attr( $name )
+            . '" name="' . esc_attr( $option_name  . '[' . $name . ']' )
             . '" value="1"' . ($checked ? ' checked' : '') . '>'
-            . '<label for="'. $name .'"><div></div></label>'
+            . '<label for="'. esc_attr( $name ) .'"><div></div></label>'
             . '</div>';
         if ($description) {
-            $output .= '<div class="description"><small>' . $description . '</small></div>';
+            $output .= '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
         }
         $output .= '</div>';
 
