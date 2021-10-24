@@ -22,13 +22,14 @@
 
 
 <?php if ($active) { ?>
-<div id="progscroll" class="progscroll <?php echo $direction ?>" data-color="<?php echo $color ?>" data-z-index="<?php echo $z_index ?>"
-    data-direction="<?php echo $direction ?>" data-thickness="<?php echo $thickness ?>" data-thickness-unit="<?php echo $thickness_unit ?>" 
-    data-position-xs="<?php echo $position_xs ?>" data-position-xs-unit="<?php echo $position_xs_unit ?>"
-    data-position-sm="<?php echo $position_sm ?>" data-position-sm-unit="<?php echo $position_sm_unit ?>"
-    data-position-md="<?php echo $position_md ?>" data-position-md-unit="<?php echo $position_md_unit ?>"
-    data-position-lg="<?php echo $position_lg ?>" data-position-lg-unit="<?php echo $position_lg_unit ?>"
-    data-position-xl="<?php echo $position_xl ?>" data-position-xl-unit="<?php echo $position_xl_unit ?>"
+<div id="progscroll" class="progscroll <?php echo esc_attr( $direction ) ?>" data-color="<?php echo esc_attr( $color ) ?>" 
+    data-z-index="<?php echo esc_attr( $z_index ) ?>" data-direction="<?php echo esc_attr( $z_index ) ?>" 
+    data-thickness="<?php echo esc_attr( $thickness ) ?>" data-thickness-unit="<?php echo esc_attr( $thickness_unit ) ?>" 
+    data-position-xs="<?php echo esc_attr( $position_xs ) ?>" data-position-xs-unit="<?php echo esc_attr( $position_xs_unit ) ?>"
+    data-position-sm="<?php echo esc_attr( $position_sm ) ?>" data-position-sm-unit="<?php echo esc_attr( $position_sm_unit ) ?>"
+    data-position-md="<?php echo esc_attr( $position_md ) ?>" data-position-md-unit="<?php echo esc_attr( $position_md_unit ) ?>"
+    data-position-lg="<?php echo esc_attr( $position_lg ) ?>" data-position-lg-unit="<?php echo esc_attr( $position_lg_unit ) ?>"
+    data-position-xl="<?php echo esc_attr( $position_xl ) ?>" data-position-xl-unit="<?php echo esc_attr( $position_xl_unit ) ?>"
     >
 </div>
 <?php } ?>

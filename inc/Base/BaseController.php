@@ -22,7 +22,7 @@ class BaseController {
     }
 
     protected function print_var($var) {
-        echo "<pre>$var</pre>";
+        echo '<pre>' . esc_attr( $var ) . '</pre>';
     }
 
     protected function print_arr(array $arr) {
@@ -31,9 +31,9 @@ class BaseController {
         echo '</pre>';
     }
 
-    protected function dump_var($var) {
+    protected function dump_var($x) {
         echo '<pre>';
-        var_dump($var);
+        var_dump($x);
         echo '</pre>';
     }
 }
