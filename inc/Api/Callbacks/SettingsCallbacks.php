@@ -110,14 +110,12 @@ class SettingsCallbacks extends BaseController {
         $value = isset($option[$name]) && $option[$name] ? $option[$name] : ''; 
 
         // return the input
-        $output = '<input type="' . esc_attr( $type ) . '" class="regular-text" id="' . esc_attr( $name ) 
+        echo '<input type="' . esc_attr( $type ) . '" class="regular-text" id="' . esc_attr( $name ) 
             . '" name="' . esc_attr( $option_name . '[' . $name . ']' )
             . '" value="' .  esc_attr($value) . '" placeholder="' . esc_attr( $placeholder ) . '">';
         if ($description) {
-            $output .= '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
+            echo '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
         }
-
-        echo $output;
     }
 
     public function text_field_with_units( $args ) {
@@ -133,23 +131,21 @@ class SettingsCallbacks extends BaseController {
         $unit = isset($option[$unit_name]) && $option[$unit_name] ? $option[$unit_name] : 'px'; 
 
         // return the input
-        $output = '<div><div class="progscroll-multi-text-fields-wrapper regular-text">'
+        echo '<div><div class="progscroll-multi-text-fields-wrapper regular-text">'
             . '<input type="' . esc_attr( $type ) . '" id="' . esc_attr( $name )
             . '" name="' . esc_attr( $option_name . '[' . $name . ']' )
             . '" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '">'
             . '<select name="' . esc_attr( $option_name . '[' . $unit_name . ']' )  . '" id="' . esc_attr( $unit_name ) . '">';
         
         foreach ($this->units as $value) {
-            $output .= '<option value="' . esc_attr( $value ) . '"' . ( ($unit === $value) ? ' selected' : '' ) . '>' . esc_html( $value ) . '</option>';
+            echo '<option value="' . esc_attr( $value ) . '"' . ( ($unit === $value) ? ' selected' : '' ) . '>' . esc_html( $value ) . '</option>';
         }
 
-        $output .= '</select></div>';
+        echo '</select></div>';
         if ($description) {
-            $output .= '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
+            echo '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
         }
-        $output .= '</div>';
-
-        echo $output;
+        echo '</div>';
     }
 
     public function select_field($args) {
@@ -160,13 +156,12 @@ class SettingsCallbacks extends BaseController {
         $option = get_option( $option_name ); // get option value from db
         $value = isset($option[$name]) && $option[$name] ? $option[$name] : null; 
 
-        $output = '<select name="' . esc_attr( $option_name . '[' . $name . ']' ) . '" id="' . esc_attr( $name ) . '" class="regular-text">';
+        echo '<select name="' . esc_attr( $option_name . '[' . $name . ']' ) . '" id="' . esc_attr( $name ) . '" class="regular-text">';
         foreach ($select_options as $item) {
-            $output .= '<option value="' . esc_attr( $item  ) . '"' . ( (isset($value) && $item === $value)  ? 'selected' : '') . '>' . esc_html( strtoupper($item) ) . '</option>';
+            echo '<option value="' . esc_attr( $item  ) . '"' . ( (isset($value) && $item === $value)  ? 'selected' : '') . '>' . esc_html( strtoupper($item) ) . '</option>';
         }
-        $output .= '</select>';
+        echo '</select>';
 
-        echo $output;
     }
 
     public function checkbox_field( $args ) {
@@ -178,17 +173,15 @@ class SettingsCallbacks extends BaseController {
         $option = get_option( $option_name ); // get option value from db
         $checked = isset($option[$name]) && $option[$name] ? $option[$name] : false;    
 
-        $output = '<div><div class="' . esc_attr( $classes ) . '">'
+        echo '<div><div class="' . esc_attr( $classes ) . '">'
             . '<input type="checkbox" id="' . esc_attr( $name )
             . '" name="' . esc_attr( $option_name  . '[' . $name . ']' )
             . '" value="1"' . ($checked ? ' checked' : '') . '>'
             . '<label for="'. esc_attr( $name ) .'"><div></div></label>'
             . '</div>';
         if ($description) {
-            $output .= '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
+            echo '<div class="description"><small>' . esc_html( $description ) . '</small></div>';
         }
-        $output .= '</div>';
-
-        echo $output;
+        echo '</div>';
     }
 }
